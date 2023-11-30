@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+// importing all the required libraries
+import { Route, Routes } from 'react-router-dom';
+import { ReactNotifications } from 'react-notifications-component';
+
+// importing all required files
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import Dashboard from './components/Dashboard/Dashboard';
+import 'react-notifications-component/dist/theme.css';
+import HabitDetails from './components/HabitDetails/HabitDetails';
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ReactNotifications/>
+      <Navbar/>
+      <Routes>
+        <Route exact path='/' element={<Home/>}/>
+        <Route exact path = '/dashboard' element={<Dashboard/>}/>
+        <Route exact path='/habit/:id/detail' element={<HabitDetails/>}/>
+      </Routes>
+      
     </div>
   );
 }
